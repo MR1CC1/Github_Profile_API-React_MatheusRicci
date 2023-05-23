@@ -6,13 +6,12 @@ function App() {
   const [valorInput, setValorInput] = useState('');
   const [inputUrl, setInputUrl] = useState('MR1CC1');
   
+  const url = `https://api.github.com/users/${inputUrl}`;
+  
   const handleChange = (e) => {
     setValorInput(e.target.value);
-    console.log(e.target.value)
     setInputUrl(e.target.value)
   };
-
-  const url = `https://api.github.com/users/${inputUrl}`;
 
   useEffect(() => {
     const fetchData = async () => {
@@ -83,8 +82,9 @@ function App() {
             <p style={{textAlign: 'center'}} className="mb-2">GitHub Infos</p>
             <p><a style={{textDecoration: 'underline' }} href="https://www.linkedin.com/in/matheus-ricci-228a06182/">Linkedin Matheus Ricci</a></p>
           </h2>
-          <p className="mt-4 text-2xl">{dados.name}</p>
+          <p style={{textAlign: 'center'}} className="mt-4 text-2xl">{dados.name}</p>
           <p className="mt-4">{dados.bio}</p>
+          <p className="mt-5" style={{textAlign: 'center'}}><a style={{textDecoration: 'underline' }} href={dados.html_url}>Acessar Perfil no GitHub</a></p>
           <dl className="mt-16 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 sm:gap-y-16 lg:gap-x-8">
             {infos.map((info) => (
               <div key={info.name} className="border-t border-gray-200 pt-2">
